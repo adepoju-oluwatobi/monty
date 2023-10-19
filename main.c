@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 				free_all();
 				return (EXIT_FAILURE);
 			}
-		var.line_number++;
+		var.line_num++;
 	}
 
 	free_all();

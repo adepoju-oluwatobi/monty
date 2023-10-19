@@ -14,7 +14,7 @@ int start_vars(vars *var)
 	if (var->dict == NULL)
 		return (EXIT_FAILURE);
 	var->head = NULL;
-	var->line_number = 1;
+	var->line_num = 1;
 	var->MODE = 0;
 
 	return (EXIT_SUCCESS);
@@ -70,13 +70,13 @@ int call_funct(vars *var, char *opcode)
 		{
 			if (!var->dict[i].f)
 				return (EXIT_SUCCESS);
-			var->dict[i].f(&var->head, var->line_number);
+			var->dict[i].f(&var->head, var->line_num);
 			return (EXIT_SUCCESS);
 		}
 	if (strlen(opcode) != 0 && opcode[0] != '#')
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n",
-			var->line_number, opcode);
+			var->line_num, opcode);
 		return (EXIT_FAILURE);
 	}
 
