@@ -69,7 +69,7 @@ typedef struct glob_var
 extern vars var;
 
 /* ================================================================= */
-/* main_file.c */
+/* man_file.c */
 /* ================================================================= */
 int start_vars(vars *var);
 instruction_t *create_instru();
@@ -78,23 +78,23 @@ void free_all(void);
 int _isdigit(char *string);
 
 /* ================================================================= */
-/* opcode_func.c */
+/* op_funct.c */
 /* ================================================================= */
-void pall(stack_t **stack, unsigned int line_num);
+void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 
 /* ================================================================= */
-/* opcode_func_2.c */
+/* op_funct_2.c */
 /* ================================================================= */
-void swap(stack_t **stack, unsigned int line_numbe);
-void add(stack **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divi(stack_t **stack, unsigned int line_number);
 
 /* ================================================================= */
-/* opcode_func_3.c */
+/* op_funct_3.c */
 /* ================================================================= */
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
@@ -102,7 +102,7 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 
 /* ================================================================= */
-/* opcode_func_4.c */
+/* op_funct_4.c */
 /* ================================================================= */
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
