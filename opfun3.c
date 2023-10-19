@@ -3,56 +3,56 @@
 /**
  * mul - s
  * @stack: Double linked list
- * @line_num: File line execution
+ * @line_number: File line execution
  */
-void mul(stack_list **stack, unsigned int line_num)
+void mul(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n",
-			line_num);
+			line_number);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n * (*stack)->n;
-	pop(stack, line_num);
+	pop(stack, line_number);
 }
 
 
 /**
  * mod - s
  * @stack: Double linked list
- * @line_num: File line execution
+ * @line_number: File line execution
  */
-void mod(stack_list **stack, unsigned int line_num)
+void mod(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't mod, stack too short\n",
-			line_num);
+			line_number);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%u: division by zero\n", line_num);
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n % (*stack)->n;
-	pop(stack, line_num);
+	pop(stack, line_number);
 }
 
 /**
  * pchar - s
  * @stack: Double linked list
- * @line_num: File line execution
+ * @line_number: File line execution
  */
-void pchar(stack_list **stack, unsigned int line_num)
+void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_num);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -61,7 +61,7 @@ void pchar(stack_list **stack, unsigned int line_num)
 		printf("%c\n", (*stack)->n);
 		return;
 	}
-	fprintf(stderr, "L%u: can't pchar, value out of range\n", line_num);
+	fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 	free_all();
 	exit(EXIT_FAILURE);
 }
@@ -69,26 +69,26 @@ void pchar(stack_list **stack, unsigned int line_num)
 /**
  * pstr - s
  * @stack: Double linked list
- * @line_num: File line execution
+ * @line_number: File line execution
  */
-void pstr(stack_list **stack, unsigned int line_num)
+void pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_list *temp = *stack;
-	(void) line_num;
+	stack_t *tmp = *stack;
+	(void) line_number;
 
 	if (!stack || !*stack)
 	{
 		putchar('\n');
 		return;
 	}
-	while (temp)
+	while (tmp)
 	{
-		if (temp->n == 0)
+		if (tmp->n == 0)
 			break;
-		if (!isascii((temp)->n))
+		if (!isascii((tmp)->n))
 			break;
-		putchar(temp->n);
-		temp = temp->next;
+		putchar(tmp->n);
+		tmp = tmp->next;
 	}
 	putchar('\n');
 }

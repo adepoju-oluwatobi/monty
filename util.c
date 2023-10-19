@@ -1,32 +1,32 @@
 #include "monty.h"
 
 /**
- * start_variableiables - Fake rand to jackpoint Giga Millions
- * @variable: Global variableiables to initialize
+ * start_vars - Fake rand to jackpoint Giga Millions
+ * @var: Global variables to initialize
  * Return: 0 Success, 1 Failed
  */
-int start_variables(variables *variable)
+int start_vars(vars *var)
 {
-	variable->file = NULL;
-	variable->buffer = NULL;
-	variable->temp = 0;
-	variable->dictionary = create_instru();
-	if (variable->dictionary == NULL)
+	var->file = NULL;
+	var->buff = NULL;
+	var->tmp = 0;
+	var->dict = create_instru();
+	if (var->dict == NULL)
 		return (EXIT_FAILURE);
-	variable->head = NULL;
-	variable->line_num = 1;
-	variable->MODE = 0;
+	var->head = NULL;
+	var->line_number = 1;
+	var->MODE = 0;
 
 	return (EXIT_SUCCESS);
 }
 
 /**
- * create_instru - Create new functions dictionaryionary
- * Return: dictionaryionary pointer
+ * create_instru - Create new functions dictionary
+ * Return: Dictionary pointer
  */
-instruct_list *create_instru()
+instruction_t *create_instru()
 {
-	instruct_list *ptr = malloc(sizeof(instruct_list) * 18);
+	instruction_t *ptr = malloc(sizeof(instruction_t) * 18);
 
 	if (!ptr)
 	{
@@ -56,27 +56,27 @@ instruct_list *create_instru()
 }
 
 /**
- * call_function - Call Functions
- * @variable: Global variableiables
+ * call_funct - Call Functions
+ * @var: Global variables
  * @opcode: Command to execute
  * Return: None
  */
-int call_function(variables *variable, char *opcode)
+int call_funct(vars *var, char *opcode)
 {
 	int i;
 
-	for (i = 0; variable->dictionary[i].opcode; i++)
-		if (strcmp(opcode, variable->dictionary[i].opcode) == 0)
+	for (i = 0; var->dict[i].opcode; i++)
+		if (strcmp(opcode, var->dict[i].opcode) == 0)
 		{
-			if (!variable->dictionary[i].f)
+			if (!var->dict[i].f)
 				return (EXIT_SUCCESS);
-			variable->dictionary[i].f(&variable->head, variable->line_num);
+			var->dict[i].f(&var->head, var->line_number);
 			return (EXIT_SUCCESS);
 		}
 	if (strlen(opcode) != 0 && opcode[0] != '#')
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n",
-			variable->line_num, opcode);
+			var->line_number, opcode);
 		return (EXIT_FAILURE);
 	}
 
@@ -90,28 +90,28 @@ int call_function(variables *variable, char *opcode)
  */
 void free_all(void)
 {
-	if (variable.buffer != NULL)
-		free(variable.buffer);
-	if (variable.file != NULL)
-		fclose(variable.file);
-	free(variable.dictionary);
-	if (variable.head != NULL)
+	if (var.buff != NULL)
+		free(var.buff);
+	if (var.file != NULL)
+		fclose(var.file);
+	free(var.dict);
+	if (var.head != NULL)
 	{
-		while (variable.head->next != NULL)
+		while (var.head->next != NULL)
 		{
-			variable.head = variable.head->next;
-			free(variable.head->prev);
+			var.head = var.head->next;
+			free(var.head->prev);
 		}
-		free(variable.head);
+		free(var.head);
 	}
 }
 
 /**
- * _is_digit - Clean all program mallocs
+ * _isdigit - Clean all program mallocs
  * @string: Num to validate
  * Return: 0 Success, 1 Failed
  */
-int _is_digit(char *string)
+int _isdigit(char *string)
 {
 	int i;
 
