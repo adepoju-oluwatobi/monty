@@ -45,7 +45,7 @@ typedef struct instruction_s
 
 
 /**
- * struct glob_var - golbal variables
+ * struct glob_variable - golbal variableiables
  * @file: file name
  * @buff: Getline buffer
  * @tmp: Getline counter
@@ -54,7 +54,7 @@ typedef struct instruction_s
  * @line_num: Stores file current line
  * @MODE: Program configuration stack or queue
  */
-typedef struct glob_var
+typedef struct glob_variable
 {
 	FILE *file;
 	char *buff;
@@ -63,17 +63,17 @@ typedef struct glob_var
 	stack_t *head;
 	unsigned int line_num;
 	int MODE;
-} vars;
+} variables;
 
 
-extern vars var;
+extern variables variable;
 
 /* ================================================================= */
 /* man_file.c */
 /* ================================================================= */
-int start_vars(vars *var);
+int start_variables(variables *variable);
 instruction_t *create_instru();
-int call_funct(vars *var, char *opcode);
+int call_funct(variables *variable, char *opcode);
 void free_all(void);
 int _isdigit(char *string);
 
